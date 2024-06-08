@@ -1,0 +1,62 @@
+
+<div class="container">
+  <!--Logo Image -->
+  <img [src]="logo" class="img-fluid mx-auto d-block mt-3" height="150" width="200">
+  <div class="row mt-5">
+    <div class="col text-center">
+      <!-- Title-->
+      <h3 class="alert  text-white" style="background-color:#daac91;"> قائمة الطعام</h3>
+
+      <!-- Search Field-->
+      <div class="row mb-3">
+        <div class="col">
+          <input type="text" class="form-control" id="p1" [(ngModel)]="searchItem" placeholder="ابحث هنا">
+        </div>
+      </div>
+    <!-- Total and Qty Field -->  
+<div class="row  text-white text-center me-1 ms-1 " style="border-radius:5px;background: #cc9375;">
+  <div class="col">
+    <span class="p-2">السعر</span> <span class="p-2">{{total}}</span>
+
+  </div>
+  <div class="col">
+    <span class="p-2">عدد الطلبات</span> <span class="p-2">{{qty}}</span>
+
+  </div>
+</div>
+<!--Card content -->
+<div class="card d-flex  ">
+  <div class="card-body ">
+
+    <table class="table  ">
+      <thead  >
+      <tr>
+        <td>الرقم</td>
+        <td>الإسم</td>
+        <td>السعر</td>
+        <td>الوصف</td> 
+        <td>الصورة</td>
+        <td>إختر</td>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of find(foodmenu)" class="align-middle">
+          <td>{{item.id }}</td>
+          <td>{{item.name }}</td>
+          <td>{{item.price }}</td>
+          <td>{{item.description}}</td>
+          <td><img [src]="item.img" height="160" width="200"></td>
+          <td><input type="checkbox" (change)="sum($event,item.price)"></td>
+        </tr>
+      </tbody>
+    </table>
+
+
+</div><!--card-body end -->
+</div><!-- card end-->
+</div><!--col end -->
+</div> <!--row end -->
+
+</div> <!-- container-->
+<router-outlet />
+
